@@ -3,7 +3,6 @@ require_once("./utils/tools.php");
 
 session_start();
 
-
 if (isset($_POST['submit'])) {
     if ($_POST['email'] == '' or $_POST['pass'] == '') {
         echo "un champ est null";
@@ -22,10 +21,18 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
         if ($stmt->rowCount() > 0) {
-            $_SESSION['role'] = $data['role'];
-            header('location:index.php');
-            log_r($data);
+            if (isset($data['email'])) {
+                $_SESSION['role'] = $data['role'];
+                $_SESSION['email'] = $data['email'];
+                header('location:index.php');
+                log_r($data);
+                echo $data['email'];
+                echo $_SESSION['email'];
+            } else {
+                echo "email not exist";
+            }
         } else {
             echo "error";
         }
