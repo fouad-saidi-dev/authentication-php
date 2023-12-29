@@ -57,10 +57,15 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="container" style="width: 50%;">
+    <h1 class="text-center">Login</h1>
         <form action="login.php" method="post">
-            <input type="text" class="form-control" placeholder="email" name="email">
-            <input type="text" class="form-control" placeholder="password" name="pass">
+            <div class="form-group">
+            <input type="text" class="form-control mb-3" placeholder="email" name="email">
+            </div>
+            <div class="form-group">
+            <input type="text" class="form-control mb-3" placeholder="password" name="pass">
             <button name="submit" type="submit" class="btn btn-outline-success">Login</button>
+            </div>
         </form>
     </div>
 </body>
